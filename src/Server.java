@@ -15,9 +15,17 @@ public class Server {
             
       socket=sSocket.accept();
       System.out.println("Server connesso con il socket: "+ socket.getRemoteSocketAddress());
-            
-      //scambio dati
+        
+      //invio al client (non funziona)
+      DataOutputStream dout=new DataOutputStream(socket.getOutputStream());
+      dout.writeUTF("Server: Connessione avvenuta");
+      dout.flush();
+      dout.close();
       socket.getInputStream();
+
+      
+
+      
     }catch(BindException be){
       System.err.println("Server già avviato");
     }catch(Exception e){
